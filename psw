@@ -1,0 +1,67 @@
+weak_passwords = [
+    '123456',
+    '123456789',
+    'Qwerty',
+    'Password',
+    '12345',
+    '12345678',
+    '111111',
+    '1234567',
+    '123123',
+    'Qwerty123',
+    '1q2w3e',
+    '1234567890',
+    'DEFAULT',
+    '0',
+    'Abc123',
+    '654321',
+    '123321',
+    'Qwertyuiop',
+    'Iloveyou',
+    '666666',
+]
+
+
+class PasswordChecker():
+    def __init__(self, password, weak_passwords):
+        self.password = password
+        self.weak_passwords = weak_passwords
+
+    def is_password_length_ok(self):
+        if self.password > 8:
+            return True
+        else:
+            return False and print('password length not OK')
+
+    def is_password_weak(self):
+        if self.password in self.weak_passwords:
+            return False and print(f'Password is weak')
+        else:
+            return True
+
+    def has_password_at_least_two_numbers(self):
+        if len([x for x in self.password if x.isdigit()]) < 2:
+            return True
+        else:
+            return False and print(f'Password needs at least 2 digits')
+
+    def has_password_at_least_two_capital_letters(self):
+        if self.password.isUpper(2):
+            return True
+        else:
+            return False and print(f'Password needs at least 2 capital letters')
+
+    def do_password_validation(self):
+        try:
+            if self.is_password_length_ok() == True:
+                if self.is_password_weak() == True:
+                    if self.has_password_at_least_two_numbers() == True:
+                        if self.has_password_at_least_two_capital_letters() == True:
+                            print(f'Password OK')
+        except:
+            print(f'Password is wrong')
+
+
+my_instance = PasswordChecker(
+    password='HejHej667', weak_passwords=weak_passwords)
+print(my_instance.do_password_validation())
